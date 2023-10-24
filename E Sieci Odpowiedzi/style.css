@@ -1,3 +1,7 @@
 .questionflagimage {
-    display: none;
-  }
+  display: none;
+}
+
+.icon {
+  width: 17px;
+}

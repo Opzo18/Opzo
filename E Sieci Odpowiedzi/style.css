@@ -1,5 +1,7 @@
-
-
 .icon {
   width: 17px;
+}
+
+input[type="radio"] {
+  display: none;
 }

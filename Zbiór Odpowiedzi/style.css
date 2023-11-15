@@ -1,0 +1,19 @@
+.icon {
+  width: 17px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.grade {
+  display: none;
+}
+
+.grading {
+  display: none;
+}
+
+.questionflag {
+  display: none;
+}

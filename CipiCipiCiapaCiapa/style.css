@@ -1,0 +1,23 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("assets/cipi.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+#text {
+  position: absolute;
+  text-align: center; 
+  font-size: 40px;
+  bottom: 50px;
+  width: 100%;
+}

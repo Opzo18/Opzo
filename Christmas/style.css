@@ -10,6 +10,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: url("./santa.png"), auto;
 }
 
 h1 {

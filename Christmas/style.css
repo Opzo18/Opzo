@@ -1,0 +1,45 @@
+body {
+  background-color: #000;
+  height: 100%;
+  width: 100vw;
+  background-image: url("./dog.gif");
+  background-repeat: repeat-y;
+  background-size: cover;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: yellow;
+  font-size: 3vw;
+  text-shadow: 0 0 10px #ff0000, 0 0 10px #0000ff;
+}
+
+body,
+.now {
+  &:after {
+    content: "";
+    position: fixed;
+    top: -3000%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-image: url("./snow.png");
+    background-size: 30%;
+    animation-name: snow;
+    animation-duration: 250s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes snow {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(70%);
+  }
+}

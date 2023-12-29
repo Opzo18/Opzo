@@ -4,8 +4,10 @@ body {
   min-width: 320px;
   background-color: #000;
   background-image: url("./dog.gif");
-  background-repeat: repeat-y;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: 70%;
+  background-attachment: fixed;
   overflow-x: hidden;
   display: flex;
   justify-content: center;

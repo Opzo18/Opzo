@@ -1,0 +1,140 @@
+:root {
+  --bg-color: #242424;
+  --bg-gray: #444;
+  --light-gray: #554e4e;
+  --white-gray: #dadada;
+  --iconSize: 32px;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-size: 24px;
+  font-family: "Lato", sans-serif;
+  overflow-wrap: break-word;
+  min-width: 320px;
+}
+
+.container {
+  background-color: var(--light-gray);
+  max-width: 600px;
+  margin: auto;
+  padding: 10px;
+  box-shadow: 0 0 15px #00ff12;
+  border-radius: 25px;
+  text-align: center;
+}
+
+#todoInput {
+  background-color: inherit;
+  color: var(--white-gray);
+  border: 3px solid black;
+  border-radius: 15px;
+  font-size: 15px;
+  outline: none;
+  padding-left: 8px;
+  width: 208px;
+  height: 32px;
+}
+
+#todoInput::placeholder {
+  color: var(--white-gray);
+}
+
+#addBTN {
+  background-color: inherit;
+  color: var(--white-gray);
+  border: 3px solid black;
+  border-radius: 15px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  height: 40px;
+  width: 60px;
+}
+
+#addBTN:hover {
+  background-color: var(--bg-gray);
+}
+
+#list {
+  background-color: var(--bg-gray);
+  color: #dadada;
+  border: 3px solid black;
+  border-radius: 15px;
+  margin: 10px auto;
+  padding: 10px;
+  width: 51%;
+  text-align: left;
+}
+
+#list li {
+  list-style-type: none;
+  border: 2px rgb(122, 88, 88) solid;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  position: relative;
+}
+
+#list li .images {
+  display: block;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
+}
+
+#list li:hover .images {
+  max-height: 200px;
+}
+
+.images {
+  text-align: center;
+  display: none;
+}
+
+.editIco {
+  width: var(--iconSize);
+  cursor: pointer;
+}
+
+.trashIco {
+  width: var(--iconSize);
+  cursor: pointer;
+}
+
+.editInput {
+  padding: 0;
+  background-color: inherit;
+  color: #dadada;
+  border: none;
+  font-size: 24px;
+  width: 100%;
+  resize: none;
+}
+
+.saveIco {
+  background-color: var(--light-gray);
+  color: #fff;
+  border: 3px solid #000;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  margin-left: 50%;
+  transform: translate(-50%);
+  height: 30px;
+  width: 60px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.saveIco:hover {
+  background-color: var(--bg-gray);
+}
+
+/* Screen settings */
+
+@media screen and (max-width: 326px) {
+  #addBTN {
+    margin-top: 10px;
+  }
+}

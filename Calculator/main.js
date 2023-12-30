@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (value === "backspace") {
       const currentScreenValue = screen.textContent;
       updateScreen(currentScreenValue.slice(0, -1));
+    } else if (value === "x") {
+      screen.textContent += "*";
     } else {
       screen.textContent += value;
     }

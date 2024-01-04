@@ -1,3 +1,7 @@
+:root {
+  --text-color: #f0f8ff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,25 +16,32 @@ body {
 img {
   width: 100svw;
   height: 100svh;
-}
-
-.Panda h1,
-h2,
-p {
-  color: #d3d3d3;
+  margin: 0;
 }
 
 .top-text {
+  position: absolute;
   text-align: center;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: larger;
+  color: var(--text-color);
 }
 
 .bottom-text {
   position: absolute;
   bottom: 10px;
+  left: 20px;
   font-size: larger;
+  color: var(--text-color);
 }
 
-.Komodo {
+.Panda {
+  display: none;
+}
+
+.Wallaby {
   display: none;
 }
 
@@ -38,10 +49,10 @@ p {
   display: none;
 }
 
-.Penguin {
+.Komodo {
   display: none;
 }
 
-.Wallaby {
+.Penguin {
   display: none;
 }

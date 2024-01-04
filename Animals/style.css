@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100svw;
+  height: 100svh;
+  overflow-x: hidden;
+}
+
+img {
+  width: 100svw;
+  height: 100svh;
+}
+
+.Panda h1,
+h2,
+p {
+  color: #d3d3d3;
+}
+
+.top-text {
+  text-align: center;
+}
+
+.bottom-text {
+  position: absolute;
+  bottom: 10px;
+  font-size: larger;
+}
+
+.Komodo {
+  display: none;
+}
+
+.Lion {
+  display: none;
+}
+
+.Penguin {
+  display: none;
+}
+
+.Wallaby {
+  display: none;
+}

@@ -78,6 +78,10 @@ body {
   transform: translate(0, -50%);
 }
 
+.arrows {
+  cursor: pointer;
+}
+
 #left-arrow {
   left: 20px;
 }

@@ -58,7 +58,6 @@ body {
   background-image: linear-gradient(to left, #2ecc71, #3498db,#f39c12, #e23415 );
   -webkit-background-clip: text;
   animation: textAnimate 5s linear infinite;
-  -webkit-background-size: 500%;
   background-size: 500%;
 }
 

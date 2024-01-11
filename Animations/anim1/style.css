@@ -1,3 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+body {
+  font-family: "Gloria Hallelujah", cursive;
+}
+
+.container {
+  display: flex;
+  box-shadow: 0px 0px 50px 15px #00ff12;
+  background-color: #00ff12;
+  border-radius: 16px;
+}
+
 .card {
   position: relative;
   background-color: #242424;
@@ -24,8 +37,8 @@
   content: "";
   position: absolute;
   inset: 10px;
-  background-color: rgb(250, 145, 162);
-  border-radius: 16px;
+  background-color: rgb(194, 2, 178);
+  border-radius: 15px;
 }
 
 @keyframes animate {
@@ -35,4 +48,9 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+span {
+  font-size: 10em;
+  z-index: 1;
 }

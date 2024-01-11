@@ -16,3 +16,17 @@ body {
   align-items: center;
   text-align: center;
 }
+
+.main-container {
+  font-size: xx-large;
+}
+
+a {
+  color: rgb(116, 2, 116);
+  text-decoration: none;
+  transition: 1.5s ease;
+}
+
+a:hover {
+  color: rgb(202, 0, 0);
+}

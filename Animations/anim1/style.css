@@ -2,6 +2,10 @@
 
 body {
   font-family: "Gloria Hallelujah", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .container {
@@ -55,7 +59,7 @@ body {
   font-size: 10em;
   z-index: 1;
   color: transparent;
-  background-image: linear-gradient(to left, #2ecc71, #3498db,#f39c12, #e23415 );
+  background-image: linear-gradient(to left, #2ecc71, #3498db, #f39c12, #e23415);
   -webkit-background-clip: text;
   animation: textAnimate 5s linear infinite;
   background-size: 500%;

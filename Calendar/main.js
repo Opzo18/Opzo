@@ -16,7 +16,6 @@ function updateCalendar() {
   const options = { month: "long", year: "numeric" };
   currentMonthElement.textContent = new Intl.DateTimeFormat("pl-PL", options).format(currentDate);
 
-  // Determine the number of rows needed
   const numRows = Math.ceil((daysInMonth + firstDayOfMonth) / 7);
 
   for (let i = 0; i < numRows; i++) {

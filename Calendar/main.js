@@ -13,21 +13,6 @@ function updateCalendar() {
   const calendarBody = document.getElementById("calendarBody");
   const currentMonthElement = document.getElementById("currentMonth");
 
-  const monthNames = [
-    "Styczeń",
-    "Luty",
-    "Marzec",
-    "Kwiecień",
-    "Maj",
-    "Czerwiec",
-    "Lipiec",
-    "Sierpień",
-    "Wrzesień",
-    "Październik",
-    "Listopad",
-    "Grudzień",
-  ];
-
   const options = { month: "long", year: "numeric" };
   currentMonthElement.textContent = new Intl.DateTimeFormat("pl-PL", options).format(currentDate);
 

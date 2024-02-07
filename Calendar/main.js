@@ -31,7 +31,7 @@ function updateCalendar() {
         cell.textContent = dayInMonth;
 
         cell.addEventListener("click", function () {
-          alert(`Kliknąłeś/aś ${dayInMonth}/${currentMonth + 1}/${currentYear}`);
+          alert(`${dayInMonth}/${currentMonth + 1}/${currentYear}`);
         });
       }
     }

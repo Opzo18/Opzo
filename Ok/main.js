@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const choose = document.querySelector(".choose");
   const love = document.querySelector(".love");
 
-  let currentWidth = 380;
+  let currentWidth = 180;
   let currentHeight = 50;
   let currentFont = 40;
 

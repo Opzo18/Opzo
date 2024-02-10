@@ -4,20 +4,21 @@
   margin: 0;
   padding: 0;
   font-family: "Protest Revolution", sans-serif;
-  font-size: 40px;
 }
 
 body {
   background: linear-gradient(to right, purple, rgb(245, 108, 131));
-  /* background: linear-gradient(to right, rgb(203, 218, 0), rgb(78, 235, 46), rgb(14, 184, 226)); */
   background-size: 200%;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+  min-width: 570px;
 }
 
 h1 {
-  font-size: 50px;
   margin-top: 15px;
+  justify-content: center;
+  font-size: 50px;
 }
 
 .center {
@@ -31,6 +32,7 @@ button {
   height: 50px;
   border-radius: 25px;
   border: none;
+  font-size: 45px;
 }
 
 button:hover {
@@ -44,24 +46,62 @@ p {
 
 .love {
   display: none;
-}
-
-.heart {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: url("heart.png") no-repeat center center;
-  background-size: cover;
-  transform-origin: 50% 50%;
-  pointer-events: none;
-}
-
-.container {
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  overflow: hidden;
+}
+
+.loveH {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.rain {
+  position: relative;
+  display: flex;
+  z-index: 1;
+}
+
+.rain span {
+  position: relative;
+  background-image: url("heart.png");
+  background-repeat: repeat;
+  background-size: cover;
+  margin: 0 10px;
+  animation: animate linear infinite;
+  animation-duration: calc(15s / var(--i));
+  transform-origin: bottom;
+  width: 60px;
+  height: 60px;
+}
+
+@keyframes animate {
+  0% {
+    transform: translatey(0) scale(1);
+  }
+
+  30% {
+    transform: translatey(30vh) scale(1);
+  }
+
+  40% {
+    transform: translatey(40vh) scale(1);
+  }
+
+  60% {
+    transform: translatey(60vh) scale(1);
+  }
+
+  70% {
+    transform: translatey(80vh) scale(1);
+  }
+
+  100% {
+    transform: translatey(80vh) scale(0);
+  }
+}
+
+@media screen and (max-width: 600px) {
 }

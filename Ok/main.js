@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!localStorage.getItem("choosedOption")) return;
 
     option = localStorage.getItem("choosedOption");
-    console.log(option);
     if (option == "yes") {
       marry();
     }

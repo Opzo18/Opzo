@@ -18,15 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Load local storage
-  // window.onload = () => {
-  //   if (!localStorage.getItem("choosedOption")) return;
+  window.onload = () => {
+    if (!localStorage.getItem("choosedOption")) return;
 
-  //   option = localStorage.getItem("choosedOption");
-  //   console.log(option);
-  //   if (option == "yes") {
-  //     marry();
-  //   }
-  // };
+    option = localStorage.getItem("choosedOption");
+    console.log(option);
+    if (option == "yes") {
+      marry();
+    }
+  };
 
   const no = document.querySelector(".btnNo");
   const yes = document.querySelector(".btnYes");

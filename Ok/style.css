@@ -114,9 +114,9 @@ p {
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
   h1 {
     font-size: 28px;
-    height: 60px;
+    height: 46px;
   }
 }

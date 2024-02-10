@@ -1,14 +1,12 @@
-let currentWidth = 380;
-let currentHeight = 50;
-let currentFont = 40;
-
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Hello World");
-
   const no = document.querySelector(".btnNo");
   const yes = document.querySelector(".btnYes");
   const choose = document.querySelector(".choose");
   const love = document.querySelector(".love");
+
+  let currentWidth = 380;
+  let currentHeight = 50;
+  let currentFont = 40;
 
   function marry() {
     choose.style.display = "none";
@@ -25,16 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
     currentWidth += 5;
     currentHeight += 5;
     currentFont += 5;
-    console.log(currentWidth);
 
-    if (currentWidth == 400) {
+    if (currentWidth === 400) {
       no.innerHTML = "TAK";
     } else if (currentWidth > 400) {
       marry();
     }
   });
 
-  yes.addEventListener("click", () => {
-    marry();
-  });
+  yes.addEventListener("click", marry);
 });

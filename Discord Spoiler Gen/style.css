@@ -62,7 +62,29 @@ body {
   outline: none;
   font-size: 18px;
   border-radius: 15px;
-  box-shadow: 0 0 15px rgb(2, 117, 2);
+  animation: boxShadowAnim 5s infinite;
+}
+
+@keyframes boxShadowAnim {
+  0% {
+    box-shadow: 0 0 15px #02ad02;
+  }
+
+  30% {
+    box-shadow: #f5a523;
+  }
+
+  50% {
+    box-shadow: 0 0 15px #e74c3c;
+  }
+
+  70% {
+    box-shadow: #f5a523;
+  }
+
+  100% {
+    box-shadow: 0 0 15px #02ad02;
+  }
 }
 
 .normal-text::placeholder,

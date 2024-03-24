@@ -1,9 +1,35 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    background-color: #000;
-    color: #fff;
-}
+    background: url("PanzerkampfwagenVI.jpg");
+    background-repeat: no-repeat;
+    background-position-x: 35%;
+    background-attachment: fixed;
+  }
+
+  .sieci {
+    display: block;
+  }
+
+  .sieci p a {
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    z-index: 1;
+    color: transparent;
+    background-image: linear-gradient(to left, #000000, #db0b8b, #e26f03, rgb(60, 236, 6));
+    -webkit-background-clip: text;
+    animation: textAnimate 5s linear infinite;
+    background-size: 500%;
+  }
+
+  @keyframes textAnimate {
+    0% {
+      background-position: 0 100%;
+    }
+
+    50% {
+      background-position: 100% 0;
+    }
+
+    100% {
+      background-position: 0 100%;
+    }
+  }

@@ -11,7 +11,7 @@ body {
 
   .sieci p a {
     text-transform: uppercase;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     z-index: 1;
     color: transparent;
     background-image: linear-gradient(to left, #000000, #db0b8b, #e26f03, rgb(60, 236, 6));

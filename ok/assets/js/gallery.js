@@ -1,6 +1,6 @@
 // ADD LINKS TO PAGE
 function addLinks() {
-  fetch("/assets/json/galleryPagesList.json") // Zmienic na link https:// jeżeli jest na serwerze
+  fetch("opzo18.github.io/Opzo/ok/assets/json/galleryPagesList.json") // Zmienic na link https:// jeżeli jest na serwerze
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");

@@ -31,12 +31,7 @@
         position: relative;
         overflow: hidden;
       }
-      .left {
-        background: linear-gradient(to right, black 50%, transparent);
-      }
-      .right {
-        background: linear-gradient(to left, black 50%, transparent);
-      }
+
       .left::before,
       .right::before {
         content: "";
@@ -49,14 +44,20 @@
         opacity: 0.3;
         z-index: -1;
       }
-      /* .left::before {
+      .left::before {
         background: url("./assets/images/Julia.png") no-repeat center;
         filter: brightness(0.8) grayscale(1);
       }
       .right::before {
         background: url("./assets/images/Dawid.png") no-repeat center;
-        filter: brightness(0.8) hue-rotate(180deg);
-      } */
+        filter: brightness(0.8) grayscale(1);
+      }
+
+      .left::before:hover,
+      .right::before:hover {
+        filter: brightness(1.2);
+      }
+
       .neon {
         font-size: 2rem;
         text-transform: uppercase;
@@ -139,10 +140,12 @@
     <div id="opis" class="description">
       <h2>Razem tworzymy Avochaders</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, quos. Quos, quidem. Quisquam, quia. Quisquam, quas. Quisquam, quod. Quisquam, quae. Quisquam, quia. Quisquam, quos.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, quos. Quos, quidem. Quisquam, quia. Quisquam, quas. Quisquam, quod.
+        Quisquam, quae. Quisquam, quia. Quisquam, quos.
       </p>
       <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam officia nisi, quibusdam numquam praesentium omnis, est, fugiat placeat laboriosam ducimus quae eveniet magnam error maxime blanditiis ipsum rerum adipisci harum!
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam officia nisi, quibusdam numquam praesentium omnis, est, fugiat placeat
+        laboriosam ducimus quae eveniet magnam error maxime blanditiis ipsum rerum adipisci harum!
       </p>
     </div>
   </body>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avochaders</title>
     <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
       * {
         margin: 0;
@@ -140,29 +141,47 @@
       .social-icons {
         display: flex;
         justify-content: center;
+        gap: 25px;
         margin-top: 20px;
       }
+
       .icon {
-        font-size: 2rem;
-        margin: 0 15px;
+        font-size: 2.5rem;
+        color: white;
+        transition: all 0.3s ease;
         text-decoration: none;
-        transition: transform 0.3s ease, color 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
       }
+
+      .icon i {
+        transition: transform 0.3s ease;
+      }
+
       .instagram:hover {
         color: #e1306c;
-        transform: scale(1.2);
+        background: rgba(225, 48, 108, 0.1);
       }
+
       .facebook:hover {
         color: #1877f2;
-        transform: scale(1.2);
+        background: rgba(24, 119, 242, 0.1);
       }
-      .tiktok:hover {
-        color: #69c9d0;
+
+      .youtube:hover {
+        color: #ff0000;
+        background: rgba(255, 0, 0, 0.1);
+      }
+
+      .icon:hover i {
         transform: scale(1.2);
       }
 
       /* Sekcja galerii */
-
       .gallery {
         display: flex;
         justify-content: center;
@@ -189,25 +208,37 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 1000;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
       }
-      .lightbox-content {
+
+      .lightbox.active {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        color: white;
+        justify-content: center;
       }
+
       .lightbox-img {
-        max-width: 90%;
-        max-height: 80%;
-        border-radius: 10px;
+        max-width: 90vw;
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
       }
+
+      .lightbox-img.loaded {
+        transform: scale(1);
+        opacity: 1;
+      }
+
       .image-description,
       .image-counter {
         margin-top: 10px;
+        text-align: center;
       }
       .prev,
       .next {
@@ -219,6 +250,8 @@
         background: none;
         border: none;
         cursor: pointer;
+        padding: 20px;
+        z-index: 1001;
       }
       .prev {
         left: 10px;
@@ -235,6 +268,7 @@
         background: none;
         border: none;
         cursor: pointer;
+        z-index: 1001;
       }
     </style>
   </head>
@@ -268,9 +302,15 @@
 
     <!-- Dodanie ikon social media -->
     <div class="social-icons">
-      <a href="https://www.instagram.com/" target="_blank" class="icon instagram">&#x1F4F7;</a>
-      <a href="https://www.facebook.com/" target="_blank" class="icon facebook">&#x1F4F1;</a>
-      <a href="https://www.tiktok.com/" target="_blank" class="icon tiktok">&#x1F3A4;</a>
+      <a href="https://www.instagram.com/" target="_blank" class="icon instagram" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/" target="_blank" class="icon facebook" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.youtube.com/" target="_blank" class="icon youtube" aria-label="YouTube">
+        <i class="fab fa-youtube"></i>
+      </a>
     </div>
 
     <!-- Galeria zdjęć -->
@@ -278,64 +318,85 @@
       <img src="./assets/galleryImg/Zdjecie1.png" alt="Zdjęcie 1" class="gallery-item" data-description="Opis zdjęcia 1" />
       <img src="./assets/galleryImg/Zdjecie2.png" alt="Zdjęcie 2" class="gallery-item" data-description="Opis zdjęcia 2" />
       <img src="./assets/galleryImg/Zdjecie3.png" alt="Zdjęcie 3" class="gallery-item" data-description="Opis zdjęcia 3" />
+      <img src="./assets/galleryImg/Zdjecie1.png" alt="Zdjęcie 1" class="gallery-item" data-description="Opis zdjęcia 1" />
+      <img src="./assets/galleryImg/Zdjecie2.png" alt="Zdjęcie 2" class="gallery-item" data-description="Opis zdjęcia 2" />
+      <img src="./assets/galleryImg/Zdjecie3.png" alt="Zdjęcie 3" class="gallery-item" data-description="Opis zdjęcia 3" />
+      <img src="./assets/galleryImg/Zdjecie1.png" alt="Zdjęcie 1" class="gallery-item" data-description="Opis zdjęcia 1" />
+      <img src="./assets/galleryImg/Zdjecie2.png" alt="Zdjęcie 2" class="gallery-item" data-description="Opis zdjęcia 2" />
+      <img src="./assets/galleryImg/Zdjecie3.png" alt="Zdjęcie 3" class="gallery-item" data-description="Opis zdjęcia 3" />
+      <img src="./assets/galleryImg/Zdjecie1.png" alt="Zdjęcie 1" class="gallery-item" data-description="Opis zdjęcia 1" />
+      <img src="./assets/galleryImg/Zdjecie2.png" alt="Zdjęcie 2" class="gallery-item" data-description="Opis zdjęcia 2" />
+      <img src="./assets/galleryImg/Zdjecie3.png" alt="Zdjęcie 3" class="gallery-item" data-description="Opis zdjęcia 3" />
     </div>
 
     <!-- Lightbox dla galerii -->
     <div id="lightbox" class="lightbox">
-      <button class="prev" onclick="prevImage()">&#10094;</button>
+      <button class="close-btn" onclick="closeLightbox()">×</button>
+      <button class="prev" onclick="prevImage(event)">&#10094;</button>
       <div class="lightbox-content">
         <img id="lightbox-img" class="lightbox-img" src="" alt="Podgląd zdjęcia" />
         <p id="image-description" class="image-description"></p>
         <p id="image-counter" class="image-counter"></p>
       </div>
-      <button class="next" onclick="nextImage()">&#10095;</button>
+      <button class="next" onclick="nextImage(event)">&#10095;</button>
     </div>
-  </body>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    let currentIndex = 0;
-    let images = [];
 
-    $(document).ready(function () {
-      images = $(".gallery-item").toArray();
-      $(".gallery-item").click(function () {
-        currentIndex = images.indexOf(this);
-        openLightbox();
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      let currentIndex = 0;
+      let images = [];
+
+      $(document).ready(function () {
+        images = $(".gallery-item").toArray();
+
+        $(".gallery-item").click(function () {
+          currentIndex = images.indexOf(this);
+          openLightbox();
+        });
       });
-    });
 
-    function openLightbox() {
-      $("#lightbox").css("display", "flex");
-      updateLightbox();
-    }
-
-    function closeLightbox(event) {
-      if (!$(event.target).is("#lightbox-img") && !$(event.target).is(".prev") && !$(event.target).is(".next")) {
-        $("#lightbox").hide();
-      }
-    }
-
-    function updateLightbox() {
-      let img = $(images[currentIndex]);
-      $("#lightbox-img").attr("src", img.attr("src"));
-      $("#image-description").text(img.data("description"));
-      $("#image-counter").text(`${currentIndex + 1} / ${images.length}`);
-    }
-
-    function prevImage(event) {
-      event.stopPropagation();
-      if (currentIndex > 0) {
-        currentIndex--;
+      function openLightbox() {
+        $("#lightbox").addClass("active");
+        $(document).on("keyup", handleEscape);
         updateLightbox();
       }
-    }
 
-    function nextImage(event) {
-      event.stopPropagation();
-      if (currentIndex < images.length - 1) {
-        currentIndex++;
-        updateLightbox();
+      function handleEscape(e) {
+        if (e.key === "Escape") {
+          closeLightbox();
+        }
       }
-    }
-  </script>
+
+      function closeLightbox() {
+        $("#lightbox").removeClass("active");
+        $(document).off("keyup", handleEscape);
+      }
+
+      function updateLightbox() {
+        const img = $(images[currentIndex]);
+        $("#lightbox-img").attr({
+          src: img.attr("src"),
+          alt: img.attr("alt"),
+        });
+        $("#image-description").text(img.data("description"));
+        $("#image-counter").text(`${currentIndex + 1}/${images.length}`);
+      }
+
+      function prevImage(event) {
+        event.stopPropagation();
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateLightbox();
+        }
+      }
+
+      function nextImage(event) {
+        event.stopPropagation();
+        if (currentIndex < images.length - 1) {
+          currentIndex++;
+          updateLightbox();
+        }
+      }
+    </script>
+  </body>
 </html>

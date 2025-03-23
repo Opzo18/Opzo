@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avochaders</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        width: 100%;
+        display: flex;
+        height: 100vh; /* Pełny ekran */
+        position: relative;
+      }
+      .left,
+      .right {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .left {
+        background: linear-gradient(to right, black 50%, transparent);
+      }
+      .right {
+        background: linear-gradient(to left, black 50%, transparent);
+      }
+      .left::before,
+      .right::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-size: cover;
+        opacity: 0.3;
+        z-index: -1;
+      }
+      /* .left::before {
+        background: url("./assets/images/Julia.png") no-repeat center;
+        filter: brightness(0.8) grayscale(1);
+      }
+      .right::before {
+        background: url("./assets/images/Dawid.png") no-repeat center;
+        filter: brightness(0.8) hue-rotate(180deg);
+      } */
+      .neon {
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 20px;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: 0.3s;
+        position: relative;
+        z-index: 1;
+      }
+      .neon-red {
+        border: 2px solid red;
+        color: red;
+        box-shadow: 0 0 10px red;
+      }
+      .neon-blue {
+        border: 2px solid cyan;
+        color: cyan;
+        box-shadow: 0 0 10px cyan;
+      }
+      .neon:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Strzałka do przewijania */
+      .scroll-down {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        animation: bounce 1.5s infinite;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(10px);
+        }
+      }
+
+      /* Sekcja opisu poniżej */
+      .description {
+        text-align: center;
+        padding: 40px 20px;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), black);
+        font-size: 1.2rem;
+      }
+      .description h2 {
+        font-size: 2.5rem;
+        color: #ff4d4d;
+        text-shadow: 0 0 10px red;
+      }
+      .description p {
+        max-width: 800px;
+        margin: 10px auto;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Główna sekcja zajmująca cały ekran -->
+    <div class="container">
+      <div class="left">
+        <a href="julia.html" class="neon neon-blue">Julia - Fizjoterapia</a>
+      </div>
+      <div class="right">
+        <a href="dawid.html" class="neon neon-red">Dawid - Gimnastyka & Akrobatyka</a>
+      </div>
+      <!-- Strzałka do przewijania -->
+      <a href="#opis" class="scroll-down">↓</a>
+    </div>
+
+    <!-- Sekcja opisu poniżej -->
+    <div id="opis" class="description">
+      <h2>Razem tworzymy Avochaders</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, quos. Quos, quidem. Quisquam, quia. Quisquam, quas. Quisquam, quod. Quisquam, quae. Quisquam, quia. Quisquam, quos.
+      </p>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam officia nisi, quibusdam numquam praesentium omnis, est, fugiat placeat laboriosam ducimus quae eveniet magnam error maxime blanditiis ipsum rerum adipisci harum!
+      </p>
+    </div>
+  </body>
+</html>

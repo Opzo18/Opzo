@@ -183,12 +183,14 @@
 
       /* Sekcja galerii */
       .gallery {
-        display: flex;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 10px;
-        flex-wrap: wrap;
-        margin: 20px 0;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
       }
+
       .gallery-item {
         width: 150px;
         height: 150px;
@@ -197,8 +199,30 @@
         border-radius: 10px;
         transition: transform 0.3s;
       }
+
       .gallery-item:hover {
         transform: scale(1.1);
+      }
+
+      .load-more-container {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .load-more-btn {
+        padding: 10px 30px;
+        font-size: 1.2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid #00ffff;
+        color: #00ffff;
+        cursor: pointer;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+      }
+
+      .load-more-btn:hover {
+        background: rgba(0, 255, 255, 0.2);
+        box-shadow: 0 0 15px #00ffff;
       }
 
       .lightbox {
@@ -314,19 +338,9 @@
     </div>
 
     <!-- Galeria zdjęć -->
-    <div class="gallery">
-      <img src="./assets/galleryImg/Zdjecie1.png" alt="Zdjęcie 1" class="gallery-item" data-description="Opis zdjęcia 1" />
-      <img src="./assets/galleryImg/Zdjecie2.png" alt="Zdjęcie 2" class="gallery-item" data-description="Opis zdjęcia 2" />
-      <img src="./assets/galleryImg/Zdjecie3.png" alt="Zdjęcie 3" class="gallery-item" data-description="Opis zdjęcia 3" />
-      <img src="./assets/galleryImg/Zdjecie1.png" alt="Zdjęcie 1" class="gallery-item" data-description="Opis zdjęcia 1" />
-      <img src="./assets/galleryImg/Zdjecie2.png" alt="Zdjęcie 2" class="gallery-item" data-description="Opis zdjęcia 2" />
-      <img src="./assets/galleryImg/Zdjecie3.png" alt="Zdjęcie 3" class="gallery-item" data-description="Opis zdjęcia 3" />
-      <img src="./assets/galleryImg/Zdjecie1.png" alt="Zdjęcie 1" class="gallery-item" data-description="Opis zdjęcia 1" />
-      <img src="./assets/galleryImg/Zdjecie2.png" alt="Zdjęcie 2" class="gallery-item" data-description="Opis zdjęcia 2" />
-      <img src="./assets/galleryImg/Zdjecie3.png" alt="Zdjęcie 3" class="gallery-item" data-description="Opis zdjęcia 3" />
-      <img src="./assets/galleryImg/Zdjecie1.png" alt="Zdjęcie 1" class="gallery-item" data-description="Opis zdjęcia 1" />
-      <img src="./assets/galleryImg/Zdjecie2.png" alt="Zdjęcie 2" class="gallery-item" data-description="Opis zdjęcia 2" />
-      <img src="./assets/galleryImg/Zdjecie3.png" alt="Zdjęcie 3" class="gallery-item" data-description="Opis zdjęcia 3" />
+    <div class="gallery"></div>
+    <div class="load-more-container">
+      <button class="load-more-btn neon-blue">Załaduj więcej</button>
     </div>
 
     <!-- Lightbox dla galerii -->

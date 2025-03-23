@@ -204,27 +204,6 @@
         transform: scale(1.1);
       }
 
-      .load-more-container {
-        text-align: center;
-        margin: 20px 0;
-      }
-
-      .load-more-btn {
-        padding: 10px 30px;
-        font-size: 1.2rem;
-        background: rgba(255, 255, 255, 0.1);
-        border: 2px solid #00ffff;
-        color: #00ffff;
-        cursor: pointer;
-        border-radius: 25px;
-        transition: all 0.3s ease;
-      }
-
-      .load-more-btn:hover {
-        background: rgba(0, 255, 255, 0.2);
-        box-shadow: 0 0 15px #00ffff;
-      }
-
       .lightbox {
         display: none;
         position: fixed;
@@ -294,6 +273,30 @@
         cursor: pointer;
         z-index: 1001;
       }
+
+      .loading-container {
+        display: none;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .loading-spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top: 4px solid #00ffff;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body>
@@ -339,8 +342,8 @@
 
     <!-- Galeria zdjęć -->
     <div class="gallery"></div>
-    <div class="load-more-container">
-      <button class="load-more-btn neon-blue">Załaduj więcej</button>
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
     </div>
 
     <!-- Lightbox dla galerii -->
@@ -364,15 +367,25 @@
       ];
 
       let currentPage = 0;
-      const itemsPerPage = calculateItemsPerPage();
+      let itemsPerPage = calculateItemsPerPage();
+      let isLoading = false;
 
       function calculateItemsPerPage() {
-        const galleryWidth = document.querySelector(".gallery").offsetWidth;
-        const itemsPerRow = Math.floor(galleryWidth / 160); // 150px + 10px gap
-        return itemsPerRow * 5; // 5 rzędów
+        const gallery = document.querySelector(".gallery");
+        if (!gallery) return 15; // Domyślna wartość
+        const galleryWidth = gallery.offsetWidth;
+        const itemsPerRow = Math.floor(galleryWidth / 160);
+        return itemsPerRow * 5;
       }
 
-      function renderGallery() {
+      async function renderGallery() {
+        if (isLoading) return;
+        isLoading = true;
+        showLoader();
+
+        // Symulacja opóźnienia dla demonstracji
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
         const start = currentPage * itemsPerPage;
         const end = start + itemsPerPage;
         const batch = imageData.slice(start, end);
@@ -388,7 +401,26 @@
 
         currentPage++;
         updateLightboxItems();
-        toggleLoadMoreButton();
+        hideLoader();
+        isLoading = false;
+      }
+
+      function showLoader() {
+        document.querySelector(".loading-container").style.display = "flex";
+      }
+
+      function hideLoader() {
+        document.querySelector(".loading-container").style.display = "none";
+      }
+
+      function handleScroll() {
+        const scrollThreshold = 500;
+        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+        if (scrollTop + clientHeight >= scrollHeight - scrollThreshold) {
+          const remaining = imageData.length - currentPage * itemsPerPage;
+          if (remaining > 0) renderGallery();
+        }
       }
 
       function updateLightboxItems() {
@@ -447,14 +479,12 @@
         $("#image-counter").text(`${currentIndex + 1}/${images.length}`);
       }
 
-      // Inicjalizacja
       window.addEventListener("DOMContentLoaded", () => {
         renderGallery();
+        window.addEventListener("scroll", handleScroll);
         window.addEventListener("resize", () => {
           itemsPerPage = calculateItemsPerPage();
         });
-
-        document.querySelector(".load-more-btn").addEventListener("click", renderGallery);
 
         // Aktualizacja lightbox po kliknięciu
         document.querySelector(".gallery").addEventListener("click", function (e) {

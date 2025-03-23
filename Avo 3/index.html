@@ -357,43 +357,53 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      let currentIndex = 0;
-      let images = [];
+      const imageData = [
+        { src: "./assets/galleryImg/Zdjecie1.png", description: "Opis zdjęcia 1" },
+        { src: "./assets/galleryImg/Zdjecie2.png", description: "Opis zdjęcia 2" },
+        { src: "./assets/galleryImg/Zdjecie3.png", description: "Opis zdjęcia 3" },
+      ];
 
-      $(document).ready(function () {
-        images = $(".gallery-item").toArray();
+      let currentPage = 0;
+      const itemsPerPage = calculateItemsPerPage();
 
-        $(".gallery-item").click(function () {
-          currentIndex = images.indexOf(this);
-          openLightbox();
+      function calculateItemsPerPage() {
+        const galleryWidth = document.querySelector(".gallery").offsetWidth;
+        const itemsPerRow = Math.floor(galleryWidth / 160); // 150px + 10px gap
+        return itemsPerRow * 5; // 5 rzędów
+      }
+
+      function renderGallery() {
+        const start = currentPage * itemsPerPage;
+        const end = start + itemsPerPage;
+        const batch = imageData.slice(start, end);
+
+        batch.forEach((item) => {
+          const img = document.createElement("img");
+          img.className = "gallery-item";
+          img.src = item.src;
+          img.alt = "Zdjęcie galerii";
+          img.dataset.description = item.description;
+          document.querySelector(".gallery").appendChild(img);
         });
-      });
+
+        currentPage++;
+        updateLightboxItems();
+        toggleLoadMoreButton();
+      }
+
+      function updateLightboxItems() {
+        images = Array.from(document.querySelectorAll(".gallery-item"));
+      }
+
+      function toggleLoadMoreButton() {
+        const remaining = imageData.length - currentPage * itemsPerPage;
+        document.querySelector(".load-more-btn").style.display = remaining > 0 ? "block" : "none";
+      }
 
       function openLightbox() {
         $("#lightbox").addClass("active");
-        $(document).on("keyup", handleEscape);
+        $(document).on("keyup", handleKeyboard);
         updateLightbox();
-      }
-
-      function handleEscape(e) {
-        if (e.key === "Escape") {
-          closeLightbox();
-        }
-      }
-
-      function closeLightbox() {
-        $("#lightbox").removeClass("active");
-        $(document).off("keyup", handleEscape);
-      }
-
-      function updateLightbox() {
-        const img = $(images[currentIndex]);
-        $("#lightbox-img").attr({
-          src: img.attr("src"),
-          alt: img.attr("alt"),
-        });
-        $("#image-description").text(img.data("description"));
-        $("#image-counter").text(`${currentIndex + 1}/${images.length}`);
       }
 
       function prevImage(event) {
@@ -411,6 +421,49 @@
           updateLightbox();
         }
       }
+
+      function closeLightbox() {
+        $("#lightbox").removeClass("active");
+        $(document).off("keyup", handleKeyboard);
+      }
+
+      function handleKeyboard(e) {
+        if (e.key === "Escape") {
+          closeLightbox();
+        } else if (e.key === "ArrowLeft") {
+          prevImage(e);
+        } else if (e.key === "ArrowRight") {
+          nextImage(e);
+        }
+      }
+
+      function updateLightbox() {
+        const img = $(images[currentIndex]);
+        $("#lightbox-img").attr({
+          src: img.attr("src"),
+          alt: img.attr("alt"),
+        });
+        $("#image-description").text(img.data("description"));
+        $("#image-counter").text(`${currentIndex + 1}/${images.length}`);
+      }
+
+      // Inicjalizacja
+      window.addEventListener("DOMContentLoaded", () => {
+        renderGallery();
+        window.addEventListener("resize", () => {
+          itemsPerPage = calculateItemsPerPage();
+        });
+
+        document.querySelector(".load-more-btn").addEventListener("click", renderGallery);
+
+        // Aktualizacja lightbox po kliknięciu
+        document.querySelector(".gallery").addEventListener("click", function (e) {
+          if (e.target.classList.contains("gallery-item")) {
+            currentIndex = images.indexOf(e.target);
+            openLightbox();
+          }
+        });
+      });
     </script>
   </body>
 </html>

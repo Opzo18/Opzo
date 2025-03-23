@@ -135,6 +135,107 @@
         margin: 10px auto;
         line-height: 1.6;
       }
+
+      /* Dodanie ikon social media */
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .icon {
+        font-size: 2rem;
+        margin: 0 15px;
+        text-decoration: none;
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+      .instagram:hover {
+        color: #e1306c;
+        transform: scale(1.2);
+      }
+      .facebook:hover {
+        color: #1877f2;
+        transform: scale(1.2);
+      }
+      .tiktok:hover {
+        color: #69c9d0;
+        transform: scale(1.2);
+      }
+
+      /* Sekcja galerii */
+
+      .gallery {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 20px 0;
+      }
+      .gallery-item {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: transform 0.3s;
+      }
+      .gallery-item:hover {
+        transform: scale(1.1);
+      }
+
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .lightbox-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+      }
+      .lightbox-img {
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 10px;
+      }
+      .image-description,
+      .image-counter {
+        margin-top: 10px;
+      }
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        color: white;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .prev {
+        left: 10px;
+      }
+      .next {
+        right: 10px;
+      }
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+        color: white;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -164,5 +265,77 @@
         laboriosam ducimus quae eveniet magnam error maxime blanditiis ipsum rerum adipisci harum!
       </p>
     </div>
+
+    <!-- Dodanie ikon social media -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com/" target="_blank" class="icon instagram">&#x1F4F7;</a>
+      <a href="https://www.facebook.com/" target="_blank" class="icon facebook">&#x1F4F1;</a>
+      <a href="https://www.tiktok.com/" target="_blank" class="icon tiktok">&#x1F3A4;</a>
+    </div>
+
+    <!-- Galeria zdjęć -->
+    <div class="gallery">
+      <img src="./assets/galleryImg/Zdjecie1.png" alt="Zdjęcie 1" class="gallery-item" data-description="Opis zdjęcia 1" />
+      <img src="./assets/galleryImg/Zdjecie2.png" alt="Zdjęcie 2" class="gallery-item" data-description="Opis zdjęcia 2" />
+      <img src="./assets/galleryImg/Zdjecie3.png" alt="Zdjęcie 3" class="gallery-item" data-description="Opis zdjęcia 3" />
+    </div>
+
+    <!-- Lightbox dla galerii -->
+    <div id="lightbox" class="lightbox">
+      <button class="prev" onclick="prevImage()">&#10094;</button>
+      <div class="lightbox-content">
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Podgląd zdjęcia" />
+        <p id="image-description" class="image-description"></p>
+        <p id="image-counter" class="image-counter"></p>
+      </div>
+      <button class="next" onclick="nextImage()">&#10095;</button>
+    </div>
   </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    let currentIndex = 0;
+    let images = [];
+
+    $(document).ready(function () {
+      images = $(".gallery-item").toArray();
+      $(".gallery-item").click(function () {
+        currentIndex = images.indexOf(this);
+        openLightbox();
+      });
+    });
+
+    function openLightbox() {
+      $("#lightbox").css("display", "flex");
+      updateLightbox();
+    }
+
+    function closeLightbox(event) {
+      if (!$(event.target).is("#lightbox-img") && !$(event.target).is(".prev") && !$(event.target).is(".next")) {
+        $("#lightbox").hide();
+      }
+    }
+
+    function updateLightbox() {
+      let img = $(images[currentIndex]);
+      $("#lightbox-img").attr("src", img.attr("src"));
+      $("#image-description").text(img.data("description"));
+      $("#image-counter").text(`${currentIndex + 1} / ${images.length}`);
+    }
+
+    function prevImage(event) {
+      event.stopPropagation();
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateLightbox();
+      }
+    }
+
+    function nextImage(event) {
+      event.stopPropagation();
+      if (currentIndex < images.length - 1) {
+        currentIndex++;
+        updateLightbox();
+      }
+    }
+  </script>
 </html>

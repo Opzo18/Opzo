@@ -2,7 +2,7 @@
 <html lang="pl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Avochaders</title>
     <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -13,17 +13,20 @@
         box-sizing: border-box;
         scroll-behavior: smooth;
       }
+
       body {
         background-color: black;
         color: white;
         font-family: Arial, sans-serif;
       }
+
       .container {
         width: 100%;
         display: flex;
         height: 100vh;
         position: relative;
       }
+
       .left,
       .right {
         flex: 1;
@@ -46,19 +49,16 @@
         z-index: -1;
       }
 
-      /* Obrazy w tle */
       .left::before {
         background: url("./assets/images/Julia.png") no-repeat center;
         background-size: cover;
-        background-position: center;
       }
+
       .right::before {
         background: url("./assets/images/Dawid.png") no-repeat center;
         background-size: cover;
-        background-position: center;
       }
 
-      /* Overlay przyciemniony */
       .overlay {
         position: absolute;
         width: 100%;
@@ -67,7 +67,6 @@
         transition: opacity 0.5s ease-in-out;
       }
 
-      /* Efekt hover - overlay znika */
       .left:hover .overlay,
       .right:hover .overlay {
         opacity: 0.3;
@@ -83,22 +82,25 @@
         transition: 0.3s;
         position: relative;
         z-index: 1;
+        margin-bottom: 50px;
       }
+
       .neon-red {
         border: 2px solid red;
         color: red;
         box-shadow: 0 0 10px red;
       }
+
       .neon-blue {
         border: 2px solid cyan;
         color: cyan;
         box-shadow: 0 0 10px cyan;
       }
+
       .neon:hover {
         background: rgba(255, 255, 255, 0.2);
       }
 
-      /* Strzałka do przewijania */
       .scroll-down {
         position: absolute;
         bottom: 20px;
@@ -109,6 +111,7 @@
         cursor: pointer;
         animation: bounce 1.5s infinite;
       }
+
       @keyframes bounce {
         0%,
         100% {
@@ -119,25 +122,25 @@
         }
       }
 
-      /* Sekcja opisu poniżej */
       .description {
         text-align: center;
         padding: 40px 20px;
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), black);
         font-size: 1.2rem;
       }
+
       .description h2 {
         font-size: 2.5rem;
         color: #ff4d4d;
         text-shadow: 0 0 10px red;
       }
+
       .description p {
         max-width: 800px;
         margin: 10px auto;
         line-height: 1.6;
       }
 
-      /* Dodanie ikon social media */
       .social-icons {
         display: flex;
         justify-content: center;
@@ -181,7 +184,6 @@
         transform: scale(1.2);
       }
 
-      /* Sekcja galerii */
       .gallery {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -219,30 +221,16 @@
 
       .lightbox.active {
         display: flex;
-        align-items: center;
-        justify-content: center;
       }
 
       .lightbox-img {
         max-width: 90vw;
         max-height: 90vh;
-        width: auto;
-        height: auto;
         object-fit: contain;
         border-radius: 8px;
         transition: transform 0.3s ease;
       }
 
-      .lightbox-img.loaded {
-        transform: scale(1);
-        opacity: 1;
-      }
-
-      .image-description,
-      .image-counter {
-        margin-top: 10px;
-        text-align: center;
-      }
       .prev,
       .next {
         position: absolute;
@@ -256,12 +244,15 @@
         padding: 20px;
         z-index: 1001;
       }
+
       .prev {
         left: 10px;
       }
+
       .next {
         right: 10px;
       }
+
       .close-btn {
         position: absolute;
         top: 15px;
@@ -297,24 +288,126 @@
           transform: rotate(360deg);
         }
       }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          height: auto;
+          min-height: 100vh;
+        }
+
+        .left,
+        .right {
+          height: 50vh;
+          min-height: 400px;
+          align-items: center;
+        }
+
+        .neon {
+          font-size: 1.5rem;
+          padding: 15px;
+          margin-bottom: 30px !important;
+          width: 90%;
+          text-align: center;
+        }
+
+        .description h2 {
+          font-size: 2rem;
+        }
+
+        .description p {
+          font-size: 1rem;
+          padding: 0 15px;
+        }
+
+        .social-icons {
+          gap: 15px;
+        }
+
+        .icon {
+          font-size: 2rem;
+          width: 40px;
+          height: 40px;
+        }
+
+        .gallery {
+          grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+          padding: 10px;
+        }
+
+        .gallery-item {
+          width: 100%;
+          height: 120px;
+        }
+
+        .lightbox-img {
+          max-width: 95vw;
+        }
+
+        .prev,
+        .next {
+          font-size: 1.5rem;
+          padding: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .neon {
+          font-size: 1.2rem;
+          padding: 12px;
+        }
+
+        .description h2 {
+          font-size: 1.8rem;
+        }
+
+        .description p {
+          font-size: 0.9rem;
+        }
+
+        .gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .scroll-down {
+          display: none;
+        }
+      }
+
+      @media (hover: none) and (pointer: coarse) {
+        .overlay {
+          opacity: 0.3 !important;
+        }
+
+        .neon:hover {
+          background: transparent;
+        }
+      }
+
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .left::before {
+          background-image: url("./assets/images/[email protected]");
+        }
+        .right::before {
+          background-image: url("./assets/images/[email protected]");
+        }
+      }
     </style>
   </head>
   <body>
-    <!-- Główna sekcja zajmująca cały ekran -->
     <div class="container">
       <div class="left">
-        <div class="overlay"></div>
-        <a href="#" class="neon neon-blue" style="margin-bottom: 50px">Julia - Fizjoterapia</a>
+        <a href="#" class="neon neon-blue">
+          Julia - Fizjoterapia
+        </a>
       </div>
+
       <div class="right">
-        <div class="overlay"></div>
-        <a href="#" class="neon neon-red" style="margin-bottom: 50px">Dawid - Gimnastyka & Akrobatyka</a>
+        <a href="#" class="neon neon-red"> Dawid - Gimnastyka</a>
       </div>
-      <!-- Strzałka do przewijania -->
       <a href="#opis" class="scroll-down">↓</a>
     </div>
 
-    <!-- Sekcja opisu poniżej -->
     <div id="opis" class="description">
       <h2>Razem tworzymy Avochaders</h2>
       <p>
@@ -327,7 +420,6 @@
       </p>
     </div>
 
-    <!-- Dodanie ikon social media -->
     <div class="social-icons">
       <a href="https://www.instagram.com/" target="_blank" class="icon instagram" aria-label="Instagram">
         <i class="fab fa-instagram"></i>
@@ -340,13 +432,11 @@
       </a>
     </div>
 
-    <!-- Galeria zdjęć -->
     <div class="gallery"></div>
     <div class="loading-container">
       <div class="loading-spinner"></div>
     </div>
 
-    <!-- Lightbox dla galerii -->
     <div id="lightbox" class="lightbox">
       <button class="close-btn" onclick="closeLightbox()">×</button>
       <button class="prev" onclick="prevImage(event)">&#10094;</button>
@@ -369,21 +459,27 @@
       let currentPage = 0;
       let itemsPerPage = calculateItemsPerPage();
       let isLoading = false;
+      let currentIndex = 0;
+      let images = [];
+      let touchStartX = 0;
 
       function calculateItemsPerPage() {
         const gallery = document.querySelector(".gallery");
-        if (!gallery) return 15; // Domyślna wartość
+        if (!gallery) return 15;
         const galleryWidth = gallery.offsetWidth;
-        const itemsPerRow = Math.floor(galleryWidth / 160);
-        return itemsPerRow * 5;
+        return Math.floor(galleryWidth / 160) * 5;
       }
 
-      async function renderGallery() {
+      async function renderGallery(reset = false) {
         if (isLoading) return;
         isLoading = true;
         showLoader();
 
-        // Symulacja opóźnienia dla demonstracji
+        if (reset) {
+          document.querySelector(".gallery").innerHTML = "";
+          currentPage = 0;
+        }
+
         await new Promise((resolve) => setTimeout(resolve, 500));
 
         const start = currentPage * itemsPerPage;
@@ -427,11 +523,6 @@
         images = Array.from(document.querySelectorAll(".gallery-item"));
       }
 
-      function toggleLoadMoreButton() {
-        const remaining = imageData.length - currentPage * itemsPerPage;
-        document.querySelector(".load-more-btn").style.display = remaining > 0 ? "block" : "none";
-      }
-
       function openLightbox() {
         $("#lightbox").addClass("active");
         $(document).on("keyup", handleKeyboard);
@@ -439,7 +530,7 @@
       }
 
       function prevImage(event) {
-        event.stopPropagation();
+        event?.stopPropagation();
         if (currentIndex > 0) {
           currentIndex--;
           updateLightbox();
@@ -447,7 +538,7 @@
       }
 
       function nextImage(event) {
-        event.stopPropagation();
+        event?.stopPropagation();
         if (currentIndex < images.length - 1) {
           currentIndex++;
           updateLightbox();
@@ -479,6 +570,36 @@
         $("#image-counter").text(`${currentIndex + 1}/${images.length}`);
       }
 
+      // Touch event handling
+      document.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        },
+        false
+      );
+
+      document.addEventListener(
+        "touchend",
+        (e) => {
+          const touchEndX = e.changedTouches[0].screenX;
+          const deltaX = touchStartX - touchEndX;
+
+          if (Math.abs(deltaX) > 50) {
+            if (deltaX > 0) nextImage();
+            else prevImage();
+          }
+        },
+        false
+      );
+
+      // Orientation change handling
+      window.addEventListener("orientationchange", () => {
+        itemsPerPage = calculateItemsPerPage();
+        renderGallery(true);
+      });
+
+      // Initial setup
       window.addEventListener("DOMContentLoaded", () => {
         renderGallery();
         window.addEventListener("scroll", handleScroll);
@@ -486,7 +607,6 @@
           itemsPerPage = calculateItemsPerPage();
         });
 
-        // Aktualizacja lightbox po kliknięciu
         document.querySelector(".gallery").addEventListener("click", function (e) {
           if (e.target.classList.contains("gallery-item")) {
             currentIndex = images.indexOf(e.target);

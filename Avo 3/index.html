@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Profesjonalne usługi fizjoterapii i gimnastyki - Avochaders" />
+    <meta name="keywords" content="fizjoterapia, gimnastyka, rehabilitacja, trening personalny" />
+    <meta name="author" content="Avochaders" />
     <title>Avochaders</title>
     <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -18,13 +21,78 @@
         background-color: black;
         color: white;
         font-family: Arial, sans-serif;
+        overflow-x: hidden;
       }
 
+      /* Navbar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 5%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+      }
+
+      .logo img {
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin: 0 15px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: #ff4d4d;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #ff4d4d;
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .burger {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+
+      /* Hero section */
       .container {
         width: 100%;
         display: flex;
         height: 100vh;
         position: relative;
+        margin-top: 80px;
       }
 
       .left,
@@ -122,9 +190,10 @@
         }
       }
 
+      /* About section */
       .description {
         text-align: center;
-        padding: 40px 20px;
+        padding: 80px 20px;
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), black);
         font-size: 1.2rem;
       }
@@ -133,19 +202,357 @@
         font-size: 2.5rem;
         color: #ff4d4d;
         text-shadow: 0 0 10px red;
+        margin-bottom: 30px;
       }
 
       .description p {
         max-width: 800px;
-        margin: 10px auto;
+        margin: 20px auto;
         line-height: 1.6;
       }
 
+      /* Services section */
+      .services {
+        padding: 80px 20px;
+        text-align: center;
+        background: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.8));
+      }
+
+      .services h2 {
+        font-size: 2.5rem;
+        color: cyan;
+        text-shadow: 0 0 10px cyan;
+        margin-bottom: 50px;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .service-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 30px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+
+      .service-card i {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #ff4d4d;
+      }
+
+      .service-card h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: white;
+      }
+
+      .service-card p {
+        color: #ccc;
+        line-height: 1.6;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .service-card:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .service-card:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .service-card:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      /* Testimonials */
+      .testimonials {
+        padding: 80px 20px;
+        text-align: center;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), black);
+      }
+
+      .testimonials h2 {
+        font-size: 2.5rem;
+        color: #ff4d4d;
+        text-shadow: 0 0 10px red;
+        margin-bottom: 50px;
+      }
+
+      .testimonial-slider {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .testimonial {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 30px;
+        border-radius: 15px;
+        margin: 20px;
+        display: none;
+      }
+
+      .testimonial.active {
+        display: block;
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .testimonial-author {
+        font-weight: bold;
+        color: cyan;
+      }
+
+      .testimonial-nav {
+        margin-top: 30px;
+      }
+
+      .testimonial-nav button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 10px;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .testimonial-nav button:hover {
+        color: #ff4d4d;
+      }
+
+      /* Gallery */
+      .gallery-section {
+        padding: 80px 20px;
+        text-align: center;
+        background: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.8));
+      }
+
+      .gallery-section h2 {
+        font-size: 2.5rem;
+        color: cyan;
+        text-shadow: 0 0 10px cyan;
+        margin-bottom: 50px;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .gallery-item {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: transform 0.3s;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.1);
+      }
+
+      /* Contact section */
+      .contact {
+        padding: 80px 20px;
+        text-align: center;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), black);
+      }
+
+      .contact h2 {
+        font-size: 2.5rem;
+        color: #ff4d4d;
+        text-shadow: 0 0 10px red;
+        margin-bottom: 50px;
+      }
+
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: grid;
+        gap: 20px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: white;
+        font-size: 1rem;
+      }
+
+      .contact-form textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      .contact-form button {
+        background: linear-gradient(45deg, #ff4d4d, #ff8e8e);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .contact-form button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+      }
+
+      /* Partners section */
+      .partners {
+        padding: 50px 20px;
+        text-align: center;
+        background: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.8));
+      }
+
+      .partners h3 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        color: white;
+      }
+
+      .partner-logos {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .partner-logos img {
+        height: 60px;
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: filter 0.3s, opacity 0.3s;
+      }
+
+      .partner-logos img:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+      }
+
+      /* Blog preview */
+      .blog-preview {
+        padding: 80px 20px;
+        text-align: center;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), black);
+      }
+
+      .blog-preview h2 {
+        font-size: 2.5rem;
+        color: cyan;
+        text-shadow: 0 0 10px cyan;
+        margin-bottom: 50px;
+      }
+
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .blog-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .blog-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .blog-content {
+        padding: 20px;
+      }
+
+      .blog-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: white;
+      }
+
+      .blog-card p {
+        color: #ccc;
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+
+      .read-more {
+        color: #ff4d4d;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      .read-more:hover {
+        color: white;
+      }
+
+      .view-all {
+        display: inline-block;
+        margin-top: 40px;
+        color: cyan;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+      }
+
+      .view-all:hover {
+        color: white;
+      }
+
+      /* Social icons */
       .social-icons {
         display: flex;
         justify-content: center;
         gap: 25px;
-        margin-top: 20px;
+        margin: 40px 0;
       }
 
       .icon {
@@ -184,28 +591,7 @@
         transform: scale(1.2);
       }
 
-      .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 10px;
-        padding: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .gallery-item {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        cursor: pointer;
-        border-radius: 10px;
-        transition: transform 0.3s;
-      }
-
-      .gallery-item:hover {
-        transform: scale(1.1);
-      }
-
+      /* Lightbox */
       .lightbox {
         display: none;
         position: fixed;
@@ -265,6 +651,28 @@
         z-index: 1001;
       }
 
+      .image-description {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: white;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      .image-counter {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: white;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+
+      /* Loading spinner */
       .loading-container {
         display: none;
         justify-content: center;
@@ -289,6 +697,121 @@
         }
       }
 
+      /* Footer */
+      footer {
+        background: #111;
+        color: white;
+        padding: 50px 20px 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: #ff4d4d;
+      }
+
+      .footer-section p,
+      .footer-section li,
+      .footer-section a {
+        color: #ccc;
+        line-height: 1.6;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section li {
+        margin-bottom: 10px;
+      }
+
+      .footer-section a {
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-section a:hover {
+        color: #ff4d4d;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+      }
+
+      /* Back to top button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 77, 77, 0.7);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: none;
+        z-index: 999;
+        transition: background 0.3s, transform 0.3s;
+      }
+
+      .back-to-top:hover {
+        background: rgba(255, 77, 77, 1);
+        transform: translateY(-5px);
+      }
+
+      /* Cookie consent */
+      .cookie-consent {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        transform: translateY(100%);
+        transition: transform 0.3s;
+      }
+
+      .cookie-consent.active {
+        transform: translateY(0);
+      }
+
+      .cookie-consent p {
+        margin-right: 20px;
+        color: white;
+      }
+
+      .cookie-btn {
+        background: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .cookie-btn:hover {
+        background: #ff3333;
+      }
+
+      /* Responsive styles */
       @media (max-width: 795px) {
         .container {
           flex-direction: column;
@@ -311,11 +834,18 @@
           text-align: center;
         }
 
-        .description h2 {
+        .description h2,
+        .services h2,
+        .testimonials h2,
+        .gallery-section h2,
+        .contact h2,
+        .blog-preview h2 {
           font-size: 2rem;
         }
 
-        .description p {
+        .description p,
+        .service-card p,
+        .testimonial-text {
           font-size: 1rem;
           padding: 0 15px;
         }
@@ -349,6 +879,35 @@
           font-size: 1.5rem;
           padding: 10px;
         }
+
+        .nav-links {
+          position: fixed;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background: rgba(0, 0, 0, 0.9);
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          clip-path: circle(0px at 90% -10%);
+          transition: clip-path 0.5s ease-out;
+        }
+
+        .nav-links.active {
+          clip-path: circle(1000px at 90% -10%);
+        }
+
+        .nav-links li {
+          margin: 15px 0;
+        }
+
+        .burger {
+          display: block;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 480px) {
@@ -357,11 +916,18 @@
           padding: 12px;
         }
 
-        .description h2 {
+        .description h2,
+        .services h2,
+        .testimonials h2,
+        .gallery-section h2,
+        .contact h2,
+        .blog-preview h2 {
           font-size: 1.8rem;
         }
 
-        .description p {
+        .description p,
+        .service-card p,
+        .testimonial-text {
           font-size: 0.9rem;
         }
 
@@ -371,6 +937,16 @@
 
         .scroll-down {
           display: none;
+        }
+
+        .cookie-consent {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .cookie-consent p {
+          margin-right: 0;
+          margin-bottom: 15px;
         }
       }
 
@@ -395,48 +971,172 @@
     </style>
   </head>
   <body>
-    <div class="container">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <img src="./assets/images/logo.jpg" alt="Avochaders Logo" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">O Nas</a></li>
+        <li><a href="#services">Usługi</a></li>
+        <li><a href="#gallery">Galeria</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+      <div class="burger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="container">
       <div class="left">
-        <a href="#" class="neon neon-blue">
-          Julia - Fizjoterapia
-        </a>
+        <div class="overlay"></div>
+        <a href="#" class="neon neon-blue"> Julia - Fizjoterapia </a>
       </div>
 
       <div class="right">
-        <a href="#" class="neon neon-red"> Dawid - Gimnastyka</a>
+        <div class="overlay"></div>
+        <a href="#" class="neon neon-red">Dawid - Gimnastyka</a>
       </div>
-      <a href="#opis" class="scroll-down">↓</a>
-    </div>
+      <a href="#about" class="scroll-down">↓</a>
+    </section>
 
-    <div id="opis" class="description">
+    <!-- About Section -->
+    <section id="about" class="description">
       <h2>Razem tworzymy Avochaders</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, quos. Quos, quidem. Quisquam, quia. Quisquam, quas. Quisquam, quod.
-        Quisquam, quae. Quisquam, quia. Quisquam, quos.
+        Jesteśmy pasjonatami zdrowia i sprawności fizycznej. Nasza współpraca łączy profesjonalną fizjoterapię z nowoczesnymi metodami treningowymi,
+        aby zapewnić kompleksową opiekę nad Twoim ciałem.
       </p>
       <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam officia nisi, quibusdam numquam praesentium omnis, est, fugiat placeat
-        laboriosam ducimus quae eveniet magnam error maxime blanditiis ipsum rerum adipisci harum!
+        Dzięki połączeniu naszych umiejętności i doświadczenia, oferujemy unikalne podejście do rehabilitacji i treningu, które pomaga naszym klientom
+        osiągać ich cele zdrowotne i sportowe.
       </p>
-    </div>
 
-    <div class="social-icons">
-      <a href="https://www.instagram.com/" target="_blank" class="icon instagram" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.facebook.com/" target="_blank" class="icon facebook" aria-label="Facebook">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://www.youtube.com/" target="_blank" class="icon youtube" aria-label="YouTube">
-        <i class="fab fa-youtube"></i>
-      </a>
-    </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/" target="_blank" class="icon instagram" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" class="icon facebook" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.youtube.com/" target="_blank" class="icon youtube" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    </section>
 
-    <div class="gallery"></div>
-    <div class="loading-container">
-      <div class="loading-spinner"></div>
-    </div>
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <h2>Nasze Usługi</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-heartbeat"></i>
+          <h3>Fizjoterapia</h3>
+          <p>Profesjonalna rehabilitacja i terapia manualna dostosowana do indywidualnych potrzeb pacjenta.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-dumbbell"></i>
+          <h3>Trening Personalny</h3>
+          <p>Indywidualne programy treningowe ukierunkowane na osiągnięcie konkretnych celów fitness.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-running"></i>
+          <h3>Gimnastyka</h3>
+          <p>Specjalistyczne ćwiczenia korygujące wady postawy i przywracające prawidłowe wzorce ruchowe.</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <h2>Opinie Naszych Klientów</h2>
+      <div class="testimonial-slider">
+        <div class="testimonial active">
+          <p class="testimonial-text">"Julia pomogła mi wrócić do pełnej sprawności po kontuzji kolana. Profesjonalne podejście i świetne efekty!"</p>
+          <p class="testimonial-author">- Anna K.</p>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">
+            "Treningi z Dawidem całkowicie zmieniły moje podejście do ruchu. Polecam każdemu, kto chce pracować nad swoją formą!"
+          </p>
+          <p class="testimonial-author">- Marek Z.</p>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">"Świetny duet! Kompleksowe podejście do zdrowia i treningu. Widać, że wiedzą, co robią."</p>
+          <p class="testimonial-author">- Katarzyna P.</p>
+        </div>
+        <div class="testimonial-nav">
+          <button class="prev-testimonial"><i class="fas fa-chevron-left"></i></button>
+          <button class="next-testimonial"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+      <h2>Nasza Galeria</h2>
+      <div class="gallery"></div>
+      <div class="loading-container">
+        <div class="loading-spinner"></div>
+      </div>
+    </section>
+
+    <!-- Blog Preview -->
+    <section class="blog-preview">
+      <h2>Ostatnie Artykuły</h2>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <img src="./assets/images/blog1.jpg" alt="Zdrowy kręgosłup" />
+          <div class="blog-content">
+            <h3>5 ćwiczeń na zdrowy kręgosłup</h3>
+            <p>Poznaj proste ćwiczenia, które możesz wykonywać w domu, aby zadbać o swój kręgosłup...</p>
+            <a href="#" class="read-more">Czytaj więcej</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <img src="./assets/images/blog2.jpg" alt="Trening funkcjonalny" />
+          <div class="blog-content">
+            <h3>Trening funkcjonalny - co to jest?</h3>
+            <p>Dowiedz się, dlaczego trening funkcjonalny jest tak ważny dla Twojego codziennego życia...</p>
+            <a href="#" class="read-more">Czytaj więcej</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <img src="./assets/images/blog3.jpg" alt="Regeneracja po treningu" />
+          <div class="blog-content">
+            <h3>Jak prawidłowo się regenerować?</h3>
+            <p>Odkryj najlepsze metody regeneracji po intensywnym treningu...</p>
+            <a href="#" class="read-more">Czytaj więcej</a>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="view-all">Zobacz wszystkie artykuły →</a>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+      <h3>Współpracujemy z</h3>
+      <div class="partner-logos">
+        <img src="./assets/images/partner1.png" alt="Partner 1" />
+        <img src="./assets/images/partner2.png" alt="Partner 2" />
+        <img src="./assets/images/partner3.png" alt="Partner 3" />
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2>Skontaktuj się z Nami</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Twoje Imię" required />
+        <input type="email" placeholder="Twój Email" required />
+        <textarea placeholder="Twoja Wiadomość" required></textarea>
+        <button type="submit">Wyślij Wiadomość</button>
+      </form>
+    </section>
+
+    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
       <button class="close-btn" onclick="closeLightbox()">×</button>
       <button class="prev" onclick="prevImage(event)">&#10094;</button>
@@ -448,12 +1148,133 @@
       <button class="next" onclick="nextImage(event)">&#10095;</button>
     </div>
 
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h3>O Avochaders</h3>
+          <p>Profesjonalne usługi fizjoterapeutyczne i treningowe dostosowane do indywidualnych potrzeb klientów.</p>
+        </div>
+        <div class="footer-section links">
+          <h3>Szybkie Linki</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">O Nas</a></li>
+            <li><a href="#services">Usługi</a></li>
+            <li><a href="#gallery">Galeria</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-section contact">
+          <h3>Dane Kontaktowe</h3>
+          <p><i class="fas fa-map-marker-alt"></i> ul. Przykładowa 123, Warszawa</p>
+          <p><i class="fas fa-phone"></i> +48 123 456 789</p>
+          <p><i class="fas fa-envelope"></i> kontakt@avochaders.pl</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year"></span> Avochaders. Wszelkie prawa zastrzeżone.</p>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" title="Go to top">↑</button>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-consent">
+      <p>Ta strona używa plików cookie, aby zapewnić najlepszą jakość usług. Dalsze korzystanie ze strony oznacza zgodę na ich użycie.</p>
+      <button class="cookie-btn">Akceptuję</button>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+      // Current year with Polish timezone
+      document.getElementById("current-year").textContent = new Date().toLocaleString("pl-PL", {
+        timeZone: "Europe/Warsaw",
+        year: "numeric",
+      });
+
+      // Mobile menu toggle
+      document.querySelector(".burger").addEventListener("click", function () {
+        document.querySelector(".nav-links").classList.toggle("active");
+        document.querySelector(".burger i").classList.toggle("fa-times");
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.querySelector(".nav-links").classList.remove("active");
+          document.querySelector(".burger i").classList.remove("fa-times");
+        });
+      });
+
+      // Back to top button
+      window.addEventListener("scroll", function () {
+        const backToTop = document.querySelector(".back-to-top");
+        if (window.pageYOffset > 300) {
+          backToTop.style.display = "block";
+        } else {
+          backToTop.style.display = "none";
+        }
+      });
+
+      document.querySelector(".back-to-top").addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // Testimonial slider
+      let currentTestimonial = 0;
+      const testimonials = document.querySelectorAll(".testimonial");
+
+      function showTestimonial(index) {
+        testimonials.forEach((testimonial) => testimonial.classList.remove("active"));
+        testimonials[index].classList.add("active");
+        currentTestimonial = index;
+      }
+
+      document.querySelector(".next-testimonial").addEventListener("click", function () {
+        let nextIndex = currentTestimonial + 1;
+        if (nextIndex >= testimonials.length) nextIndex = 0;
+        showTestimonial(nextIndex);
+      });
+
+      document.querySelector(".prev-testimonial").addEventListener("click", function () {
+        let prevIndex = currentTestimonial - 1;
+        if (prevIndex < 0) prevIndex = testimonials.length - 1;
+        showTestimonial(prevIndex);
+      });
+
+      // Auto-rotate testimonials
+      setInterval(() => {
+        let nextIndex = currentTestimonial + 1;
+        if (nextIndex >= testimonials.length) nextIndex = 0;
+        showTestimonial(nextIndex);
+      }, 5000);
+
+      // Cookie consent
+      if (!localStorage.getItem("cookieConsent")) {
+        setTimeout(() => {
+          document.querySelector(".cookie-consent").classList.add("active");
+        }, 2000);
+      }
+
+      document.querySelector(".cookie-btn").addEventListener("click", function () {
+        localStorage.setItem("cookieConsent", "true");
+        document.querySelector(".cookie-consent").classList.remove("active");
+      });
+
+      // Gallery functionality
       const imageData = [
-        { src: "./assets/galleryImg/Zdjecie1.png", description: "Opis zdjęcia 1" },
-        { src: "./assets/galleryImg/Zdjecie2.png", description: "Opis zdjęcia 2" },
-        { src: "./assets/galleryImg/Zdjecie3.png", description: "Opis zdjęcia 3" },
+        { src: "./assets/galleryImg/Zdjecie1.png", description: "Julia podczas sesji fizjoterapeutycznej" },
+        { src: "./assets/galleryImg/Zdjecie2.png", description: "Dawid demonstruje ćwiczenie gimnastyczne" },
+        { src: "./assets/galleryImg/Zdjecie3.png", description: "Wspólny trening funkcjonalny" },
+        { src: "./assets/galleryImg/Zdjecie4.png", description: "Warsztaty z zakresu zdrowia kręgosłupa" },
+        { src: "./assets/galleryImg/Zdjecie5.png", description: "Indywidualna konsultacja z klientem" },
+        { src: "./assets/galleryImg/Zdjecie6.png", description: "Sesja terapeutyczna z wykorzystaniem specjalistycznego sprzętu" },
+        { src: "./assets/galleryImg/Zdjecie7.png", description: "Trening na świeżym powietrzu" },
+        { src: "./assets/galleryImg/Zdjecie8.png", description: "Pokaz technik rehabilitacyjnych" },
+        { src: "./assets/galleryImg/Zdjecie9.png", description: "Grupowa sesja treningowa" },
+        { src: "./assets/galleryImg/Zdjecie10.png", description: "Warsztaty z zakresu profilaktyki kontuzji" },
       ];
 
       let currentPage = 0;
@@ -492,6 +1313,7 @@
           img.src = item.src;
           img.alt = "Zdjęcie galerii";
           img.dataset.description = item.description;
+          img.loading = "lazy";
           document.querySelector(".gallery").appendChild(img);
         });
 

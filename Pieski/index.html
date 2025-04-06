@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Woof Woof 🐶</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Woof Woof</h1>
+      <div class="sliderWrapper">
+        <div class="sliderTrack" id="sliderTrack"></div>
+      </div>
+    </div>
+
+    <script>
+      const track = document.getElementById("sliderTrack");
+      const imageWidth = 500;
+      const visibleImages = 1;
+
+      const loadDogImage = () => {
+        return fetch("https://dog.ceo/api/breeds/image/random")
+          .then((res) => res.json())
+          .then((data) => data.message);
+      };
+
+      const createDogImageElement = async () => {
+        const img = document.createElement("img");
+        img.className = "dogImg";
+        img.src = await loadDogImage();
+        return img;
+      };
+
+      const addAndSlide = async () => {
+        const img = await createDogImageElement();
+        track.appendChild(img);
+
+        // Poczekaj na DOM update
+        requestAnimationFrame(() => {
+          track.style.transition = "transform 0.5s linear";
+          track.style.transform = `translateX(-${imageWidth}px)`;
+        });
+
+        setTimeout(() => {
+          track.style.transition = "none";
+          track.removeChild(track.firstChild);
+          track.style.transform = "translateX(0)";
+        }, 500);
+      };
+
+      const startSlider = async () => {
+        for (let i = 0; i < visibleImages + 1; i++) {
+          const img = await createDogImageElement();
+          track.appendChild(img);
+        }
+
+        setInterval(addAndSlide, 1600);
+      };
+
+      startSlider();
+    </script>
+  </body>
+</html>

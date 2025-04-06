@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Meow About 🐾</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./images/kotek.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/shop.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <nav>
+        <a href="shop.php"
+          ><button><i class="fas fa-store"></i> Sklep</button></a
+        >
+        <a href="cart.php"
+          ><button><i class="fas fa-shopping-cart"></i> Koszyk</button></a
+        >
+        <a href="#"
+          ><button><i class="fas fa-users"></i> O nas</button></a
+        >
+        <a href="contact.php"
+          ><button><i class="fas fa-envelope"></i> Kontakt</button></a
+        >
+        <a href="logout.php"
+          ><button><i class="fas fa-sign-out-alt"></i> Wyloguj</button></a
+        >
+      </nav>
+
+      <div class="about-container">
+        <h1><i class="fas fa-paw paw-icon"></i>O nas</h1>
+        <p><strong>Meow Shop</strong> to wyjątkowe miejsce stworzone z miłości do kotów! 🐱</p>
+        <p>
+          Naszym celem jest dostarczanie najlepszych i najuroczych produktów dla Twojego futrzastego przyjaciela. Wierzymy, że każdy kot zasługuje na
+          odrobinę luksusu, zabawy i wygody.
+        </p>
+        <p>W naszej ofercie znajdziesz:</p>
+        <ul class="offer-list">
+          <li><span class="paw-icon">🐾</span> Zabawki dla kotków</li>
+          <li><span class="paw-icon">🐾</span> Legowiska, drapaki i akcesoria</li>
+          <li><span class="paw-icon">🐾</span> Pyszne smakołyki i karmy</li>
+          <li><span class="paw-icon">🐾</span> Gadżety dla kociarzy!</li>
+        </ul>
+
+        <p>Dziękujemy, że jesteś z nami! Razem sprawmy, aby każdy dzień Twojego kota był wyjątkowy 💜</p>
+        <img id="catImage" />
+      </div>
+    </div>
+    <script>
+      const catImage = document.getElementById("catImage");
+      fetch("https://api.thecatapi.com/v1/images/search")
+        .then((response) => response.json())
+        .then((data) => {
+          catImage.src = data[0].url;
+        });
+    </script>
+  </body>
+</html>

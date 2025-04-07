@@ -14,23 +14,24 @@
 </body>
 <script>
     const button = document.getElementById('ok');
-
     const body = document.querySelector('body');
 
-    if (document.cookie.includes('checkout')) {
-        let x = document.cookie.split("=")[3];
-        x = parseInt(x) + 2;
-        document.cookie = "checkout=" + x;
-        if (x > 500) {
-            document.cookie = "checkout=1";
-        }
-    } else {
+    let x = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('checkout='))
+        ?.split('=')[1];
+
+    if (!x) {
         document.cookie = "checkout=1";
+        x = 1;
+    } else {
+        x = parseInt(x) + 2;
+        if (x > 500) x = 1;
+        document.cookie = "checkout=" + x;
     }
 
-    let x = document.cookie.split("=")[3];
-
-    body.innerHTML = `<a href="shop.php"><h1 style="font-size: calc(50px + ${x}px); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); ">Twoje zamówienie zostało złożone!</h1></a>`;
+    body.innerHTML = `<a href="shop.php"><h1 style="font-size: calc(50px + ${x}px); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); ">Twoje zamówienie zostało złożone!</h1></a>`;
 </script>
+
 
 </html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animal Images</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <button id="dogBtn" onclick="showDog()">Doggy</button>
+        <button id="catBtn" onclick="showCat()">Meow</button>
+        <button id="racconBtn" onclick="showRaccoon()">Raccoon</button>
+      </nav>
+
+      <div id="img-container">
+        <img id="img" />
+        <div id="loader"></div>
+      </div>
+    </div>
+    <script>
+      const img = document.getElementById("img");
+      const loader = document.getElementById("loader");
+
+      window.onload = () => {
+        img.src = "./images/image.png";
+      };
+
+      function handleImageLoad() {
+        loader.style.display = "none";
+      }
+
+      function showDog() {
+        loader.style.display = "block";
+        img.src = "";
+        fetch("https://api.thedogapi.com/v1/images/search")
+          .then((woof) => woof.json())
+          .then((data) => {
+            img.onload = handleImageLoad;
+            img.onerror = handleImageLoad;
+            img.src = data[0].url;
+            img.alt = "Dog Image";
+          })
+          .catch(() => (loader.style.display = "none"));
+      }
+
+      function showCat() {
+        loader.style.display = "block";
+        img.src = "";
+        fetch("https://api.thecatapi.com/v1/images/search")
+          .then((meow) => meow.json())
+          .then((data) => {
+            img.onload = handleImageLoad;
+            img.onerror = handleImageLoad;
+            img.src = data[0].url;
+            img.alt = "Cat Image";
+          })
+          .catch(() => (loader.style.display = "none"));
+      }
+
+      function showRaccoon() {
+        loader.style.display = "block";
+        img.src = "";
+        fetch("https://api.racc.lol/v1/raccoon?json=true")
+          .then((raccon) => raccon.json())
+          .then((data) => {
+            img.onload = handleImageLoad;
+            img.onerror = handleImageLoad;
+            img.src = data.data.url;
+            img.alt = "Raccoon Image";
+          })
+          .catch(() => (loader.style.display = "none"));
+      }
+    </script>
+  </body>
+</html>

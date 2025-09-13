@@ -56,10 +56,10 @@
       function showRaccoon() {
         loader.style.display = "block";
         img.style.display = "none";
-        fetch("https://api.racc.lol/v1/raccoon?json=true")
+        fetch("https://api.racc.lol/raccoon?json=true")
           .then((raccon) => raccon.json())
           .then((data) => {
-            img.src = data.data.url;
+            img.src = data.url;
             img.alt = "Raccoon Image";
             loader.style.display = "none";
             img.style.display = "block";

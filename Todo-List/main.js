@@ -30,9 +30,8 @@ todoInput.addEventListener("keydown", function (event) {
   }
 });
 
-// Functions function
+// Functions
 function functions() {
-  // Creating div
   const images = document.createElement("div");
   images.className = "images";
 

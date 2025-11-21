@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: linear-gradient(to bottom, #e6f0fa, #ffffff);
+}
+
+.logo {
+  max-width: 220px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  color: #7b9880;
+  margin: 10px 0;
+}
+
+.tagline {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.intro-text {
+  font-size: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Main sections */
+.cierpliwosci {
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
+  color: #7b9880;
+  margin: 40px 0 10px;
+}
+
+.cierpliwosci + p {
+  text-align: center;
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.opening {
+  text-align: center;
+  background: #7b9880;
+  color: white;
+  padding: 50px 20px;
+  margin: 60px 0;
+  border-radius: 10px;
+}
+
+.opening h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 46px;
+  margin-bottom: 10px;
+}
+
+.opening p {
+  font-size: 28px;
+  font-weight: 300;
+}
+
+/* Columns – exactly like on the flyer */
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: center;
+  margin: 60px 0;
+}
+
+.col {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+.col h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  color: #7b9880;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.col ul {
+  list-style: none;
+}
+
+.col li {
+  padding-left: 30px;
+  position: relative;
+  margin: 12px 0;
+  font-size: 18px;
+}
+
+.col li::before {
+  content: "•";
+  color: #7b9880;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Mission */
+.mission {
+  text-align: center;
+  background: #f1f5f9;
+  padding: 60px 20px;
+  border-radius: 10px;
+}
+
+.mission h3 {
+  font-size: 28px;
+  color: #7b9880;
+  margin-bottom: 30px;
+}
+
+.mission ul {
+  list-style: none;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.mission li {
+  padding-left: 35px;
+  position: relative;
+  margin: 15px 0;
+  font-size: 18px;
+}
+
+.mission li::before {
+  content: "◆";
+  color: #7b9880;
+  position: absolute;
+  left: 0;
+}
+
+/* Contact */
+.contact {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.contact h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  color: #7b9880;
+  margin-bottom: 20px;
+}
+
+.contact p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.contact-info {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0;
+  font-size: 18px;
+}
+
+.contact-info a {
+  color: #000;
+  text-decoration: none;
+}
+
+.social-icons img {
+  width: 60px;
+  margin: 0 15px;
+}
+
+.start-soon {
+  text-align: center;
+  padding: 50px 20px;
+  font-size: 24px;
+  font-style: italic;
+  color: #7b9880;
+}
+
+/* Fade-in animation on scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 38px;
+  }
+  .opening h2 {
+    font-size: 36px;
+  }
+  .opening p {
+    font-size: 22px;
+  }
+  .columns {
+    flex-direction: column;
+    align-items: center;
+  }
+}

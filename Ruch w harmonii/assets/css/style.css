@@ -84,7 +84,7 @@ h1 {
   font-weight: 300;
 }
 
-/* Columns – exactly like on the flyer */
+/* Columns */
 .columns {
   display: flex;
   flex-wrap: wrap;
@@ -160,6 +160,41 @@ h1 {
   left: 0;
 }
 
+/* About */
+
+.about {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.about h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  color: #7b9880;
+  margin-bottom: 20px;
+}
+
+.about-desc {
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.about-photos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.about-photos img {
+  height: 400px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 /* Contact */
 .contact {
   text-align: center;
@@ -222,14 +257,25 @@ h1 {
   h1 {
     font-size: 38px;
   }
+
   .opening h2 {
     font-size: 36px;
   }
+
   .opening p {
     font-size: 22px;
   }
+
   .columns {
     flex-direction: column;
     align-items: center;
+  }
+
+  .about-photos img {
+    height: 200px;
+  }
+
+  #about-img2 {
+    order: 1;
   }
 }
